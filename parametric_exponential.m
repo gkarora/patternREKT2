@@ -16,7 +16,8 @@ est_y_a = exppdf(x, lambda_a);
 est_y_b = exppdf(x, lambda_b);
 
 act_y_b = exppdf(x, 1);
-act_y_a = exppdf(x, 2); %%DONT KNOW THIS IS WRONG
+act_y_a = gaussmf(x,[1 5]);
+
 figure(201);
 plot(x, act_y_a, 'g');
 hold on;

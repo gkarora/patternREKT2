@@ -21,7 +21,8 @@ end
 x = 2:0.1:10;
 y_real = gaussmf(x,[a_actual_sigma a_actual_mean]);
 y_sample = gaussmf(x,[sqrt(a_sample_var) a_sample_mean]);
-figure
+
+figure(101)
 plot(x,y_real,'g');
 hold on;
 plot(x,y_sample,'r');
@@ -33,7 +34,8 @@ hold off;
 x = 2:0.1:10;
 y_real = b_actual_lambda*exp(b_actual_lambda*x);
 y_sample = gaussmf(x,[sqrt(b_sample_var) b_sample_mean]);
-figure
+
+figure(102)
 plot(x,y_real,'g');
 hold on;
 plot(x,y_sample,'r');
