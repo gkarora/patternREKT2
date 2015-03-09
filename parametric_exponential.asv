@@ -1,0 +1,9 @@
+function [] = parametric_exponential( data )
+
+summation = sum(data(:));
+num = size(data);
+
+
+
+end
+
