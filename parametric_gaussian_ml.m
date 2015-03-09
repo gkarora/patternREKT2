@@ -19,9 +19,8 @@ end
 
 % p(x) real and sample for a
 x = 2:0.1:10;
-y_real = gaussmf(x,[a_actual_sigma a_actual_mean]);
-y_sample = gaussmf(x,[sqrt(a_sample_var) a_sample_mean]);
-
+y_real = normpdf(x,a_actual_mean,a_actual_sigma);
+y_sample = normpdf(x, a_sample_mean, sqrt(a_sample_var));
 figure(101)
 plot(x,y_real,'g');
 hold on;
@@ -32,9 +31,8 @@ hold off;
 
 % p(x) real and sample for b
 x = 2:0.1:10;
-y_real = b_actual_lambda*exp(b_actual_lambda*x);
-y_sample = gaussmf(x,[sqrt(b_sample_var) b_sample_mean]);
-
+y_real = b_actual_lambda*exp(-1*b_actual_lambda*x);
+y_sample = normpdf(x, b_sample_mean , sqrt(b_sample_var));
 figure(102)
 plot(x,y_real,'g');
 hold on;
