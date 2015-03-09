@@ -6,4 +6,5 @@ load('./BIG DATER/lab2_1.mat');
 
 load('./BIG DATER/lab2_2.mat');
 
-%load('./BIG DATER/lab2_3.mat');
+load('./BIG DATER/lab2_3.mat');
+sequential_discriminants(a,b);
