@@ -1,3 +1,4 @@
+% tested and working against the equivalent version using mvnpdf
 function [prob] = gauss2D(point,mu,Sigma)
 term1 = 1 / (2*pi*sqrt(det(Sigma)));
 term2 = -0.5 * ((point - mu) * inv(Sigma) * (point - mu)');
