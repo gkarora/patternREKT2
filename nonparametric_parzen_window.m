@@ -1,4 +1,4 @@
-function [ output_args ] = parzen_window( a,b )
+function [ output_args ] = nonparametric_parzen_window( a,b )
 x = 0:0.1:10;
 
 k = 5;
