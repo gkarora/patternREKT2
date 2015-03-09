@@ -4,4 +4,4 @@ parametric_exponential(a,b);
 parametric_uniform(a,b); 
 nonparametric_parzen_window(a,b);
 
-
+load('./BIG DATER/lab2_3.mat');
