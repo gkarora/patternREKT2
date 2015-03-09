@@ -1,5 +1,5 @@
 load('lab2_1.mat');
-%%parametric_gaussian_ml(a,b);
+parametric_gaussian_ml(a,b);
 
 lambda_a = parametric_exponential(a);
 lambda_b = parametric_exponential(b);
@@ -12,3 +12,4 @@ y_ex = exppdf(x, 1);
 %plot(y_ex);
 figure(2);
 plot(y_a_ex);
+
