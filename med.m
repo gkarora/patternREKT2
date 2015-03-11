@@ -9,5 +9,6 @@ function class = med(x,z)
     end
     
     min_distance = min(distances);
-    class = find(distances==min_distance);
+    classes = find(distances==min_distance);
+    class = classes(1);
 end
