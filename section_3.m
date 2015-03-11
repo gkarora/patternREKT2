@@ -11,7 +11,7 @@ A = importdata('./BIG DATER/lab2_2.mat');
 % show the cluster data, superimposed with the classification boundaries on
 % the plot. 
 
-figure(1)
+figure(310)
 scatter(A.al(:,1), A.al(:,2), 20, 'k', 'filled')
 hold on
 scatter(A.bl(:,1), A.bl(:,2), 20, 'b', 'filled')
