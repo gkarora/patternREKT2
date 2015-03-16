@@ -28,9 +28,13 @@ hold on
 scatter(A.bl(:,1), A.bl(:,2), 20, 'b', 'filled')
 scatter(A.cl(:,1), A.cl(:,2), 20, 'r', 'filled')
 
+scatter(A.at(:,1), A.at(:,2), 20, 'k', 'd')
+scatter(A.bt(:,1), A.bt(:,2), 20, 'b', 'd')
+scatter(A.ct(:,1), A.ct(:,2), 20, 'r', 'd')
+
 axis equal
 
-[GAUSS2D_X, GAUSS2D_Y, GAUSS2D_CLASS] = makeGrid3(1, A.al, A.bl, A.cl);
+[GAUSS2D_X, GAUSS2D_Y, GAUSS2D_CLASS] = makeGrid3(5, A.at, A.bt, A.ct);
     
 for i = 1:size(GAUSS2D_CLASS,1)
    for j = 1:size(GAUSS2D_CLASS,2)
@@ -41,7 +45,10 @@ end
 
 
 contour(GAUSS2D_X, GAUSS2D_Y, GAUSS2D_CLASS, 2, 'r');
-legend('A','B','C','Decision Boundary')
+legend('A_{learn}','B_{learn}','C_{learn}','A_{test}','B_{test}','C_{test}','Decision Boundary')
+title('Classification Boundary Of 2-D Non-Parametric Estimated PDF With Training And Test Data')
+xlabel('x_1')
+ylabel('x_2')
 hold off
     
 end
