@@ -35,6 +35,8 @@ hold on;
 plot(x,a_1,'r');
 xlabel('x');
 ylabel('p(x)');
+title('Non-Parametric Gaussian Window (S = 0.1) Estimation: p(x) Real vs. Sample for dataset A');
+legend('real', 'sample');
 hold off;
 
 a_real = normpdf(x, a_actual_mean, a_actual_sigma);
@@ -44,6 +46,8 @@ hold on;
 plot(x,a_2,'r');
 xlabel('x');
 ylabel('p(x)');
+title('Non-Parametric Gaussian Window (S = 0.4) Estimation: p(x) Real vs. Sample for dataset A');
+legend('real', 'sample');
 hold off;
 
 b_real = b_actual_lambda*exp(-1*b_actual_lambda*x);
@@ -53,6 +57,8 @@ hold on;
 plot(x,b_1,'r');
 xlabel('x');
 ylabel('p(x)');
+title('Non-Parametric Gaussian Window (S = 0.1) Estimation: p(x) Real vs. Sample for dataset B');
+legend('real', 'sample');
 hold off;
 
 figure(404)
@@ -61,6 +67,8 @@ hold on;
 plot(x,b_2,'r');
 xlabel('x');
 ylabel('p(x)');
+title('Non-Parametric Gaussian Window (S = 0.4) Estimation: p(x) Real vs. Sample for dataset B');
+legend('real', 'sample');
 hold off;
 
 end

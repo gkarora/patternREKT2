@@ -15,12 +15,21 @@ function [] = parametric_uniform( a,b )
     plot(x, act_a, 'g');
     hold on;
     plot(x, est_a, 'r');
+    xlabel('x');
+    ylabel('p(x)');
+    title('Parametric-Uniform Estimation: p(x) Real vs. Sample for dataset A');
+    legend('real', 'sample');
     hold off;
 
     figure(302);
     plot(x, act_b, 'g');
     hold on;
     plot(x, est_b, 'r');
+    
+    xlabel('x');
+    ylabel('p(x)');
+    title('Parametric-Uniform Estimation: p(x) Real vs. Sample for dataset B');
+    legend('real', 'sample');
     hold off;
 
 end

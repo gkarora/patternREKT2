@@ -27,6 +27,8 @@ hold on;
 plot(x,y_sample,'r');
 xlabel('x');
 ylabel('p(x)');
+title('Parametric-Gaussian Estimation: p(x) Real vs. Sample for dataset A');
+legend('real', 'sample');
 hold off;
 
 % p(x) real and sample for b
@@ -39,6 +41,8 @@ hold on;
 plot(x,y_sample,'r');
 xlabel('x');
 ylabel('p(x)');
+title('Parametric-Gaussian Estimation: p(x) Real vs. Sample for dataset B');
+legend('real', 'sample');
 hold off;
 
 end

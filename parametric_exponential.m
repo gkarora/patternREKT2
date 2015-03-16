@@ -22,12 +22,20 @@ figure(201);
 plot(x, act_y_a, 'g');
 hold on;
 plot(x, est_y_a, 'r');
+xlabel('x');
+ylabel('p(x)');
+title('Parametric-Exponential Estimation: p(x) Real vs. Sample for dataset A');
+legend('real', 'sample');
 hold off;
 
 figure(202);
 plot(x, act_y_b, 'g');
 hold on;
 plot(x, est_y_b, 'r');
+xlabel('x');
+ylabel('p(x)');
+title('Parametric-Exponential Estimation: p(x) Real vs. Sample for dataset B');
+legend('real', 'sample');
 hold off;
 end
 

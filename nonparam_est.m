@@ -1,4 +1,6 @@
 function [ ] = nonparam_est( )
+clear all 
+close all
 %UNTITLED4 Summary of this function goes here
 %   Detailed explanation goes here
 A = importdata('./BIG DATER/lab2_2.mat');
