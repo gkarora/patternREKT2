@@ -48,7 +48,7 @@ for i = 1:size(ML2D_CLASS,1)
    end
 end
 
-figure(310) % just ML
+figure(310) % just ML. also should plot sample mean and sample covariance.
 scatter(A.al(:,1), A.al(:,2), 20, 'k', 'filled')
 hold on
 scatter(A.bl(:,1), A.bl(:,2), 20, 'b', 'filled')
@@ -57,9 +57,24 @@ scatter(A.cl(:,1), A.cl(:,2), 20, 'r', 'filled')
 scatter(A.at(:,1), A.at(:,2), 20, 'k', 'd')
 scatter(A.bt(:,1), A.bt(:,2), 20, 'b', 'd')
 scatter(A.ct(:,1), A.ct(:,2), 20, 'r', 'd')
-axis equal
 
 contour(GAUSS2D_X, GAUSS2D_Y, ML2D_CLASS, 2, 'r');
+
+%plot sample means
+scatter([ma(1) mb(1) mc(1)], [ma(2) mb(2) mc(2)], 40, 'g', 'filled')
+
+%equiprobability contours
+baseEllipse = ellipse(0,0,0,1,1)';
+contourA = apply_class(ma,Sa,length(baseEllipse), baseEllipse);
+contourB = apply_class(mb,Sb,length(baseEllipse), baseEllipse);
+contourC = apply_class(mc,Sc,length(baseEllipse), baseEllipse);
+
+plot(contourA(:,1), contourA(:,2), 'g')
+plot(contourB(:,1), contourB(:,2), 'g')
+plot(contourC(:,1), contourC(:,2), 'g')
+
+axis equal
+
 legend('A_{learn}','B_{learn}','C_{learn}','A_{test}','B_{test}',...
        'C_{test}','Decision Boundary (ML)')
 xlabel('x_1')
