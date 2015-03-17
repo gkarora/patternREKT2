@@ -1,17 +1,18 @@
-function [ output_args ] = sequential_discriminants(a,b)
+function [ output_args ] = sequential_discriminants(a,b,iterations)
     a_pool = a;
     b_pool = b;
+    error=0;
     
     discriminants = [];
     
     should_continue = true;
     
-    for k = 1:3
+    for k = 1:iterations
         k
         while should_continue
         %   select 2 random points from a and b
-            length(a_pool)
-            length(b_pool)
+%             length(a_pool)
+%             length(b_pool)
             
             rA = randi([1 length(a_pool)],1,1);
             rB = randi([1 length(b_pool)],1,1);
@@ -32,20 +33,6 @@ function [ output_args ] = sequential_discriminants(a,b)
                     MED_AB(i,j)=class;
                 end
             end
-            
-            % draw points and MED
-            
-            figure(999)
-            scatter(a_pool(:,1), a_pool(:,2), 20, 'r', 'filled')
-            hold on
-            scatter(b_pool(:,1), b_pool(:,2), 20, 'g', 'filled')
-            
-            scatter(a_point(1), a_point(2), 20, 'b', 'filled')
-            scatter(b_point(1), b_point(2), 20, 'm', 'filled')
-
-            q = contour(xValuesAB, yValuesAB, MED_AB, 1, 'r');
-            legend('A','B','Decision Boundary');
-            hold off
             
             % confusion matrix
             med_AB_conf = zeros(2,2);
@@ -71,17 +58,23 @@ function [ output_args ] = sequential_discriminants(a,b)
             
             if(med_AB_conf(1,2)==0 || med_AB_conf(2,1)==0 || isempty(a_pool)==1)
                 should_continue = false;
-                
-                discriminants{k} = q;
-                
+                         
+                % graph data
 %                 figure(k)
 %                 scatter(a_pool(:,1), a_pool(:,2), 20, 'r', 'filled')
 %                 hold on
 %                 scatter(b_pool(:,1), b_pool(:,2), 20, 'g', 'filled')
-%                 contour(xValuesAB, yValuesAB, MED_AB, 1, 'r');
+% 
+%                 q = contour(xValuesAB, yValuesAB, MED_AB, 1, 'c');
 %                 legend('A','B','Decision Boundary');
+%                 
+%                 scatter(a_point(1), a_point(2), 20, 'b', 'filled')
+%                 scatter(b_point(1), b_point(2), 20, 'm', 'filled')
+% 
 %                 hold off
-                
+%                 
+%                 discriminants{k} = q;
+
                 %remove successfully classified points
             
                 b_temp=[];
@@ -95,6 +88,7 @@ function [ output_args ] = sequential_discriminants(a,b)
                         end
                     end
                     b_pool = b_temp;
+                    error = med_AB_conf(2,1);
                 end
 
                 a_temp = [];
@@ -108,14 +102,15 @@ function [ output_args ] = sequential_discriminants(a,b)
                         end
                     end
                     a_pool = a_temp;
-
+                    error = med_AB_conf(1,2);
                 end   
 
             end
         end
         should_continue = true;
     end
-    discriminants
+    output_args = error/200;
+%     discriminants
 end
 
 

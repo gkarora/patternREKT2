@@ -1,0 +1,29 @@
+load('./BIG DATER/lab2_1.mat');
+% parametric_gaussian_ml(a,b);
+% parametric_exponential(a,b);
+% parametric_uniform(a,b); 
+% nonparametric_parzen_window(a,b);
+
+%load('./BIG DATER/lab2_2.mat');
+
+load('./BIG DATER/lab2_3.mat');
+% error = sequential_discriminants(a,b,3);
+
+error = []
+number_sequences = [];
+
+for i = 1:5
+    errors = []
+    for j = 1:20
+        errors = [errors sequential_discriminants(a,b,3)];
+    end
+    min_er = min(errors);
+    max = max(errors);
+    avg = mean(errors);
+    std = std(errors);
+    number_sequences = [number_sequences; ]
+end
+max(error)
+min(error)
+mean(error)
+std(error)
