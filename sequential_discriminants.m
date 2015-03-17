@@ -9,15 +9,26 @@ function [ output_args ] = sequential_discriminants(a,b,iterations)
     
     for k = 1:iterations
         k
+        a_rand_pool = a_pool;
+        b_rand_pool = b_pool;
+        if(length(b_pool) == 0)
+           break;
+        end
         while should_continue
-        %   select 2 random points from a and b
-%             length(a_pool)
-%             length(b_pool)
-            
-            rA = randi([1 length(a_pool)],1,1);
-            rB = randi([1 length(b_pool)],1,1);
-            a_point = a_pool(rA,:);
-            b_point = b_pool(rB,:);            
+        %   select 2 random points from a and b            
+            if(length(a_rand_pool) == 0)
+               a_rand_pool = a_pool;
+            end
+            if(length(b_rand_pool) == 0)
+               b_rand_pool = b_pool;
+            end
+            size(b_rand_pool,1)
+            rA = randi([1 size(a_rand_pool,1)],1,1);
+            rB = randi([1 size(b_rand_pool,1)],1,1);
+            a_point = a_rand_pool(rA,:);
+            b_point = b_rand_pool(rB,:);   
+            a_rand_pool(rA, :) = [];
+            b_rand_pool(rB, :) = [];
 
             % make grid
             grid_step = 1;
@@ -33,7 +44,7 @@ function [ output_args ] = sequential_discriminants(a,b,iterations)
                     MED_AB(i,j)=class;
                 end
             end
-            
+
             % confusion matrix
             med_AB_conf = zeros(2,2);
             for i = 1:size(a_pool,1)
@@ -97,7 +108,7 @@ function [ output_args ] = sequential_discriminants(a,b,iterations)
                     for i = 1:size(a_pool,1)
                         z = [a_pool(i,1), a_pool(i,2)];
                         class = med(AB_means, z);
-                        if(class==0)
+                        if(class==2)
                            a_temp = [a_temp; z];
                         end
                     end
@@ -110,6 +121,7 @@ function [ output_args ] = sequential_discriminants(a,b,iterations)
         should_continue = true;
     end
     output_args = error/200;
+    close all
 %     discriminants
 end
 
