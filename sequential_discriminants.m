@@ -3,6 +3,15 @@ function [ output_args ] = sequential_discriminants(a,b,iterations)
     b_pool = b;
     error=0;
     
+    % create plot
+    figure
+    scatter(a_pool(:,1), a_pool(:,2), 20, 'r', 'filled')
+    hold on
+    scatter(b_pool(:,1), b_pool(:,2), 20, 'g', 'filled')
+
+
+
+    
     discriminants = [];
     
     should_continue = true;
@@ -69,15 +78,12 @@ function [ output_args ] = sequential_discriminants(a,b,iterations)
             
             if(med_AB_conf(1,2)==0 || med_AB_conf(2,1)==0 || isempty(a_pool)==1)
                 should_continue = false;
+                
+                display('DONE')
                          
                 % graph data
-%                 figure(k)
-%                 scatter(a_pool(:,1), a_pool(:,2), 20, 'r', 'filled')
-%                 hold on
-%                 scatter(b_pool(:,1), b_pool(:,2), 20, 'g', 'filled')
-% 
-%                 q = contour(xValuesAB, yValuesAB, MED_AB, 1, 'c');
-%                 legend('A','B','Decision Boundary');
+                  contour(xValuesAB, yValuesAB, MED_AB, 1, 'c');
+
 %                 
 %                 scatter(a_point(1), a_point(2), 20, 'b', 'filled')
 %                 scatter(b_point(1), b_point(2), 20, 'm', 'filled')
@@ -121,8 +127,8 @@ function [ output_args ] = sequential_discriminants(a,b,iterations)
         should_continue = true;
     end
     output_args = error/200;
-    close all
 %     discriminants
+ hold off
 end
 
 
